@@ -19,10 +19,14 @@ export const metadata: Metadata = {
   },
 };
 
+export const revalidate = 60;
+
 export default function Home() {
+  const randomNumber = Math.random() * 10;
   return (
     <div>
       <h1 className="bg-amber-300 text-amber-950">Página Home</h1>
+      <p>{randomNumber}</p>
       <Link href={"/contatos"}>Contatos</Link>
     </div>
   );

@@ -1,5 +1,6 @@
 import { Button } from "@/components/button";
 import Link from "next/link";
+import { cache } from "react";
 
 export interface PostProps {
   id: number;
@@ -18,7 +19,12 @@ export default async function PostsPage() {
 
   async function handleFetchPosts() {
     "use server";
-    const response = await fetch("https://dummyjson.com/posts");
+    const response = await fetch("https://dummyjson.com/posts", {
+      cache: "force-cache",
+      next: {
+        revalidate: 3600,
+      },
+    });
     const data: ResponseProps = await response.json();
     console.log(data);
   }
@@ -53,7 +59,9 @@ export default async function PostsPage() {
           <div key={post.id} className="bg-gray-200 rounded-md p-4">
             <h2 className="font-bold text-center">{post.title}</h2>
             <p>{post.body}</p>
-            <Link className="text-blue-500" href={`posts/${post.id}`}>Detalhes</Link>
+            <Link className="text-blue-500" href={`posts/${post.id}`}>
+              Detalhes
+            </Link>
           </div>
         ))}
       </div>
