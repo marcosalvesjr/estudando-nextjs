@@ -10,10 +10,17 @@ export function Header() {
       <nav>
         <ul className="flex items-center justify-center gap-2">
           <li>
-            <Link href='/'>Home</Link>
+            <Link href="/">Home</Link>
           </li>
-          <li><Link href='/posts'>Posts</Link></li>
-          <li><Link href='/dashboard'>Dashboard</Link></li>
+          <li>
+            <Link href="/posts">Posts</Link>
+          </li>
+          <li>
+            <Link href="/dashboard">Dashboard</Link>
+          </li>
+          <li>
+            <Link href={"/Form"}>Formulário</Link>
+          </li>
         </ul>
       </nav>
     </header>
